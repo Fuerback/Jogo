@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="imagem_acao" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary_material_light_1</item>
+        <item name="colorAccent">@color/primary_material_light_1</item>
+        <item name="android:statusBarColor">@android:color/darker_gray</item>
+    </style>
+</resources>
