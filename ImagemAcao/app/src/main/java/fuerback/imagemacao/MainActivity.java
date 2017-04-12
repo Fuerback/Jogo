@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         cartasLidas = 0;
 
         CarregaDadosJson();
-        //CarregaDados();
+        //CarregaDados();iç
 
         Button gerarCarta = (Button)findViewById(R.id.botao_carta);
         gerarCarta.setOnClickListener(new View.OnClickListener() {
