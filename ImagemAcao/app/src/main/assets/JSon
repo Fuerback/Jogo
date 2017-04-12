@@ -1,0 +1,108 @@
+{
+  "Cartas": [
+    {
+      "Pessoa": {
+        "Texto": "macho",
+        "Pontuacao": 2
+      },
+      "Objeto": {
+        "Texto": "porta-guardanapos",
+        "Pontuacao": 4
+      },
+      "Acao": {
+        "Texto": "correr",
+        "Pontuacao": 3
+      },
+      "Dificil": {
+        "Texto": "gago",
+        "Pontuacao": 5
+      },
+      "Lazer": {
+        "Texto": "apito final",
+        "Pontuacao": 1
+      },
+      "Mix": {
+        "Texto": "talismã",
+        "Pontuacao": 6
+      }
+    },
+    {
+      "Pessoa": {
+        "Texto": "Alá",
+        "Pontuacao": 5
+      },
+      "Objeto": {
+        "Texto": "louça",
+        "Pontuacao": 3
+      },
+      "Acao": {
+        "Texto": "repartir",
+        "Pontuacao": 6
+      },
+      "Dificil": {
+        "Texto": "chá",
+        "Pontuacao": 2
+      },
+      "Lazer": {
+        "Texto": "O Corcunda de Notre Dame",
+        "Pontuacao": 4
+      },
+      "Mix": {
+        "Texto": "oráculo",
+        "Pontuacao": 1
+      }
+    },
+    {
+      "Pessoa": {
+        "Texto": "xá da Pérsia",
+        "Pontuacao": 2
+      },
+      "Objeto": {
+        "Texto": "cálice",
+        "Pontuacao": 4
+      },
+      "Acao": {
+        "Texto": "flertar",
+        "Pontuacao": 6
+      },
+      "Dificil": {
+        "Texto": "irreversível",
+        "Pontuacao": 3
+      },
+      "Lazer": {
+        "Texto": "gol de empate",
+        "Pontuacao": 5
+      },
+      "Mix": {
+        "Texto": "petisco",
+        "Pontuacao": 1
+      }
+    },
+    {
+      "Pessoa": {
+        "Texto": "idade",
+        "Pontuacao": 2
+      },
+      "Objeto": {
+        "Texto": "corneta",
+        "Pontuacao": 1
+      },
+      "Acao": {
+        "Texto": "descaroçar",
+        "Pontuacao": 6
+      },
+      "Dificil": {
+        "Texto": "fio de bigode",
+        "Pontuacao": 4
+      },
+      "Lazer": {
+        "Texto": "churrasco",
+        "Pontuacao": 3
+      },
+      "Mix": {
+        "Texto": "casca",
+        "Pontuacao": 5
+      }
+    }
+  ]
+}

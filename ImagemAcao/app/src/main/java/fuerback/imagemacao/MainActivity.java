@@ -7,11 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Carta> listaCartas;
     private int cartasLidas;
-    private Carta carta;
+    private Carta objCarta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         cartasLidas = 0;
 
-        CarregaDados();
+        CarregaDadosJson();
+        //CarregaDados();
 
         Button gerarCarta = (Button)findViewById(R.id.botao_carta);
         gerarCarta.setOnClickListener(new View.OnClickListener() {
@@ -61,82 +68,48 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    private void CarregaDados() {
-        LinkedList<String> linhas = new LinkedList<String>();
+    private void CarregaDadosJson() {
+        String json = null;
         try {
-            AssetManager assetManager = getResources().getAssets();
-            InputStream inputStream = assetManager.open("dados_cartas");
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String linha;
-            while((linha = bufferedReader.readLine())!=null){
-                linhas.add(linha);
-            }
-            inputStream.close();
+            InputStream is = getAssets().open("JSon");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        listaCartas = new ArrayList<Carta>();
-        carta = new Carta();
-        String tipoCarta = "";
-        String descricao = "";
-        int pontuacao = 0;
-        for(int i = 0; i < linhas.size(); i++) {
-            String linha = linhas.get(i);
-            if(linha.isEmpty()) {
-                listaCartas.add(carta);
-                carta = new Carta();
-            }
-            else {
-                String[] palavras = linha.split(" ");
-                int numeroPalavras = palavras.length;
-                descricao = "";
-                for(int p = 0; p < numeroPalavras; p++) {
-                    if(p == 0) {
-                        tipoCarta = palavras[p];
-                    } else if (palavras[p].matches("^[0-9]")){
-                        pontuacao = Integer.parseInt(palavras[p]);
-                    } else {
-                        if(!descricao.isEmpty())
-                            descricao = descricao.concat(" " + palavras[p]);
-                        else
-                            descricao = palavras[p];
-                    }
-                }
-                PreencheCarta(carta, tipoCarta, pontuacao, descricao);
-            }
-        }
-    }
+        try {
+            JSONObject obj = new JSONObject(json);
+            JSONArray cartas  = obj.getJSONArray("Cartas");
+            listaCartas = new ArrayList<Carta>();
+            for(int i = 0; i < cartas.length(); i++) {
+                JSONObject carta = cartas.getJSONObject(i);
+                objCarta = new Carta();
 
-    private void PreencheCarta(
-            Carta carta,
-            String tipoCarta,
-            int pontuacao,
-            String descricao
-    )
-    {
-        switch (tipoCarta) {
-            case "pessoa" :
-                carta.setTextoPessoa(descricao);
-                carta.setPontosPessoa(pontuacao);
-                break;
-            case "objeto" :
-                carta.setTextoObjeto(descricao);
-                carta.setPontosObjeto(pontuacao);
-                break;
-            case "acao" :
-                carta.setTextoAcao(descricao);
-                carta.setPontosAcao(pontuacao);
-                break;
-            case "dificil" :
-                carta.setTextoDificil(descricao);
-                carta.setPontosDificil(pontuacao);
+                JSONObject pessoa = carta.getJSONObject("Pessoa");
+                objCarta.setTextoPessoa(pessoa.getString("Texto"));
+                objCarta.setPontosPessoa(pessoa.getInt("Pontuacao"));
+
+                JSONObject objeto = carta.getJSONObject("Objeto");
+                objCarta.setTextoObjeto(objeto.getString("Texto"));
+                objCarta.setPontosObjeto(objeto.getInt("Pontuacao"));
+
+                JSONObject acao = carta.getJSONObject("Acao");
+                objCarta.setTextoAcao(acao.getString("Texto"));
+                objCarta.setPontosAcao(acao.getInt("Pontuacao"));
+
+                JSONObject dificil = carta.getJSONObject("Dificil");
+                objCarta.setTextoDificil(dificil.getString("Texto"));
+                objCarta.setPontosDificil(dificil.getInt("Pontuacao"));
+
+                listaCartas.add(objCarta);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 }
