@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/pessoa"/>
+
+        <TextView
+            android:id="@+id/nome_pessoa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:elegantTextHeight="false"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:text="Nome"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pontuacao_pessoa"
+            android:text="1"
+            android:textSize="20dp"
+            android:layout_marginLeft="200dp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/objeto"
+        android:id="@+id/item_foto"/>
+
+    <TextView
+        android:id="@+id/nome_objeto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:elegantTextHeight="false"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:text="Nome"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pontuacao_objeto"
+        android:text="1"
+        android:textSize="20dp"
+        android:layout_marginLeft="200dp"
+        android:paddingTop="8dp"
+        android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/acao" />
+
+        <TextView
+            android:id="@+id/nome_acao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:elegantTextHeight="false"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:text="Nome"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pontuacao_acao"
+            android:text="1"
+            android:textSize="20dp"
+            android:layout_marginLeft="200dp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/dificil" />
+
+        <TextView
+            android:id="@+id/nome_dificil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:elegantTextHeight="false"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:text="Nome"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pontuacao_dificil"
+            android:text="1"
+            android:textSize="20dp"
+            android:layout_marginLeft="200dp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/lazer" />
+
+        <TextView
+            android:id="@+id/nome_lazer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:elegantTextHeight="false"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:text="Nome"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pontuacao_lazer"
+            android:text="1"
+            android:textSize="20dp"
+            android:layout_marginLeft="200dp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/mix" />
+
+        <TextView
+            android:id="@+id/nome_mix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:elegantTextHeight="false"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:text="Nome"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pontuacao_mix"
+            android:text="1"
+            android:textSize="20dp"
+            android:layout_marginLeft="200dp"
+            android:paddingTop="8dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

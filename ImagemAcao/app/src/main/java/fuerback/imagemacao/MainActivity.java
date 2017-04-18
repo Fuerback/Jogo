@@ -1,10 +1,15 @@
 package fuerback.imagemacao;
 
 import android.content.res.AssetManager;
+import android.os.Build;
+import android.os.CountDownTimer;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -21,9 +26,13 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import fuerback.imagemacao.adapter.CartasAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
     private List<Carta> listaCartas;
+    private List<Carta> listaCartas2;
+    private ListView listViewCartas;
     private int cartasLidas;
     private Carta objCarta;
 
@@ -33,39 +42,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         cartasLidas = 0;
 
+        listViewCartas = (ListView)findViewById(R.id.lista_cartas);
+        listaCartas2 = new ArrayList<Carta>();
+
         CarregaDadosJson();
-        //CarregaDados();iç
 
         Button gerarCarta = (Button)findViewById(R.id.botao_carta);
         gerarCarta.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 if(cartasLidas < listaCartas.size()) {
                     Carta carta = listaCartas.get(cartasLidas);
-
-                    TextView texoPessoa = (TextView)findViewById(R.id.texto_pessoa);
-                    texoPessoa.setText(carta.getTextoPessoa());
-                    TextView pontuacaoPessoa = (TextView)findViewById(R.id.pontuacao_pessoa);
-                    pontuacaoPessoa.setText(String.valueOf(carta.getPontosPessoa()));
-
-                    TextView texoObjeto = (TextView)findViewById(R.id.texto_objeto);
-                    texoObjeto.setText(carta.getTextoObjeto());
-                    TextView pontuacaoObjeto = (TextView)findViewById(R.id.pontuacao_objeto);
-                    pontuacaoObjeto.setText(String.valueOf(carta.getPontosObjeto()));
-
-                    TextView texoAcao = (TextView)findViewById(R.id.texto_acao);
-                    texoAcao.setText(carta.getTextoAcao());
-                    TextView pontuacaoAcao = (TextView)findViewById(R.id.pontuacao_acao);
-                    pontuacaoAcao.setText(String.valueOf(carta.getPontosAcao()));
-
-                    TextView texoDificil = (TextView)findViewById(R.id.texto_dificil);
-                    texoDificil.setText(carta.getTextoDificil());
-                    TextView pontuacaoDificil = (TextView)findViewById(R.id.pontuacao_dificil);
-                    pontuacaoDificil.setText(String.valueOf(carta.getPontosDificil()));
+                    MostraCarta(carta);
                 }
                 cartasLidas++;
             }
         });
+    }
+
+    private void MostraCarta(Carta carta) {
+        listaCartas2.add(carta);
+        CartasAdapter adapter = new CartasAdapter(listaCartas2, this);
+        listViewCartas.setAdapter(adapter);
     }
 
     private void CarregaDadosJson() {
