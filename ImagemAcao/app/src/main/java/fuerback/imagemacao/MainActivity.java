@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         CarregaDadosJson();
 
+        Carta carta = listaCartas.get(0);
+        MostraCarta(carta);
+        cartasLidas++;
+
         Button gerarCarta = (Button)findViewById(R.id.botao_carta);
         gerarCarta.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void MostraCarta(Carta carta) {
+        listaCartas2.clear();
         listaCartas2.add(carta);
         CartasAdapter adapter = new CartasAdapter(listaCartas2, this);
         listViewCartas.setAdapter(adapter);
