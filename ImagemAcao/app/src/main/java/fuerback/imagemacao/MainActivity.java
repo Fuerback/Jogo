@@ -28,6 +28,8 @@ import java.util.List;
 
 import fuerback.imagemacao.adapter.CartasAdapter;
 
+//----------------------------------------------------------------------------------------
+
 public class MainActivity extends AppCompatActivity {
 
     private List<Carta> listaCartas;
@@ -65,12 +67,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //----------------------------------------------------------------------------------------
+
     private void MostraCarta(Carta carta) {
         listaCartas2.clear();
         listaCartas2.add(carta);
         CartasAdapter adapter = new CartasAdapter(listaCartas2, this);
         listViewCartas.setAdapter(adapter);
     }
+
+    //----------------------------------------------------------------------------------------
 
     private void CarregaDadosJson() {
         String json = null;
@@ -116,5 +122,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    //----------------------------------------------------------------------------------------
 }
 

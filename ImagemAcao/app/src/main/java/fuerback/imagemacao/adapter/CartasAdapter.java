@@ -19,30 +19,42 @@ import fuerback.imagemacao.R;
  * Created by Usuario on 17/04/2017.
  */
 
+//----------------------------------------------------------------------------------------
+
 public class CartasAdapter extends BaseAdapter {
 
     private final List<Carta> carta;
     private final Context context;
+
+    //----------------------------------------------------------------------------------------
 
     public CartasAdapter(List<Carta> carta, Context context) {
         this.carta = carta;
         this.context = context;
     }
 
+    //----------------------------------------------------------------------------------------
+
     @Override
     public int getCount() {
         return carta.size();
     }
+
+    //----------------------------------------------------------------------------------------
 
     @Override
     public Object getItem(int i) {
         return carta.get(i);
     }
 
+    //----------------------------------------------------------------------------------------
+
     @Override
     public long getItemId(int i) {
         return carta.get(i).getId();
     }
+
+    //----------------------------------------------------------------------------------------
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
@@ -91,4 +103,6 @@ public class CartasAdapter extends BaseAdapter {
 
         return view;
     }
+
+    //----------------------------------------------------------------------------------------
 }
