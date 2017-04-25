@@ -77,11 +77,11 @@ public class CartasAdapter extends BaseAdapter {
         TextView textoDificil = (TextView) view.findViewById(R.id.nome_dificil);
         textoDificil.setText(carta2.getTextoDificil());
 
-        //TextView textoLazer = (TextView) view.findViewById(R.id.nome_lazer);
-        //textoLazer.setText(carta.getTextoLazer());
+        TextView textoLazer = (TextView) view.findViewById(R.id.nome_lazer);
+        textoLazer.setText(carta2.getTextoLazer());
 
-        //TextView textoMix = (TextView) view.findViewById(R.id.nome_mix);
-        //textoMix.setText(carta.getTextoMix());
+        TextView textoMix = (TextView) view.findViewById(R.id.nome_mix);
+        textoMix.setText(carta2.getTextoMix());
 
         TextView pontuacaoPessoa = (TextView) view.findViewById(R.id.pontuacao_pessoa);
         pontuacaoPessoa.setText(Integer.toString(carta2.getPontosPessoa()));
@@ -95,11 +95,11 @@ public class CartasAdapter extends BaseAdapter {
         TextView pontuacaoDificil = (TextView) view.findViewById(R.id.pontuacao_dificil);
         pontuacaoDificil.setText(Integer.toString(carta2.getPontosDificil()));
 
-        //TextView pontuacaoLazer = (TextView) view.findViewById(R.id.pontuacao_lazer);
-        //pontuacaoLazer.setText(carta.getPontosLazer());
+        TextView pontuacaoLazer = (TextView) view.findViewById(R.id.pontuacao_lazer);
+        pontuacaoLazer.setText(Integer.toString(carta2.getPontosLazer()));
 
-        //TextView pontuacaoMix = (TextView) view.findViewById(R.id.pontuacao_mix);
-        //pontuacaoMix.setText(carta.getPontosMix());
+        TextView pontuacaoMix = (TextView) view.findViewById(R.id.pontuacao_mix);
+        pontuacaoMix.setText(Integer.toString(carta2.getPontosMix()));
 
         return view;
     }

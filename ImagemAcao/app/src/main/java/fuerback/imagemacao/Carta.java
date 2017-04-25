@@ -78,10 +78,30 @@ public class Carta {
         this.pontosDificil = pontosDificil;
     }
 
+    public String getTextoLazer() {return textoLazer;}
+
+    public void setTextoLazer(String textoLazer) {this.textoLazer = textoLazer;}
+
+    public String getTextoMix() {return textoMix;}
+
+    public void setTextoMix(String textoMix) {this.textoMix = textoMix;}
+
+    public int getPontosLazer() {return pontosLazer;}
+
+    public void setPontosLazer(int pontosLazer) {this.pontosLazer = pontosLazer;}
+
+    public int getPontosMix() {return pontosMix;}
+
+    public void setPontosMix(int pontosMix) {this.pontosMix = pontosMix;}
+
     private String textoPessoa;
     private String textoObjeto;
     private String textoAcao;
     private String textoDificil;
+    private String textoLazer;
+    private String textoMix;
+    private int pontosLazer;
+    private int pontosMix;
     private int pontosPessoa;
     private int pontosObjeto;
     private int pontosAcao;

@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/diceContainer"
     android:orientation="vertical"
-    android:gravity="center"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="10dip">
+
     <ImageView
         android:id="@+id/die1"
         android:src="@drawable/inicio"
         android:layout_width="150dip"
         android:layout_height="150dip"
-        android:layout_marginBottom="15dip"/>
-</LinearLayout>
+        android:layout_marginBottom="15dip"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+
+    <ImageView
+        android:id="@+id/botao_avancar"
+        android:src="@drawable/seta"
+        android:layout_width="70dip"
+        android:layout_height="70dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

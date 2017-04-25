@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -53,8 +54,16 @@ public class MainActivity extends AppCompatActivity {
         MostraCarta(carta);
         cartasLidas++;
 
-        Button gerarCarta = (Button)findViewById(R.id.botao_carta);
-        gerarCarta.setOnClickListener(new View.OnClickListener() {
+        ImageView botaoVoltar = (ImageView)findViewById(R.id.botao_volta);
+        botaoVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        ImageView pularCarta = (ImageView)findViewById(R.id.botao_pular);
+        pularCarta.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
@@ -65,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 cartasLidas++;
             }
         });
+    }
+
+    //----------------------------------------------------------------------------------------
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     //----------------------------------------------------------------------------------------
@@ -114,6 +130,14 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject dificil = carta.getJSONObject("Dificil");
                 objCarta.setTextoDificil(dificil.getString("Texto"));
                 objCarta.setPontosDificil(dificil.getInt("Pontuacao"));
+
+                JSONObject lazer = carta.getJSONObject("Lazer");
+                objCarta.setTextoLazer(lazer.getString("Texto"));
+                objCarta.setPontosLazer(lazer.getInt("Pontuacao"));
+
+                JSONObject mix = carta.getJSONObject("Mix");
+                objCarta.setTextoMix(mix.getString("Texto"));
+                objCarta.setPontosMix(mix.getInt("Pontuacao"));
 
                 listaCartas.add(objCarta);
             }

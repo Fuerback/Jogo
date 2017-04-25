@@ -1,6 +1,7 @@
 package fuerback.imagemacao;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 /**
  * Created by Usuario on 24/04/2017.
@@ -42,7 +44,6 @@ public class Dado extends Activity implements SensorEventListener {
     private int diceSum;
     private int roll[] = new int[] { 6, 6 };
     private ImageView die1;
-    private LinearLayout diceContainer;
     private SensorManager sensorMgr;
     private Handler animationHandler;
     private long lastUpdate = -1;
@@ -69,15 +70,25 @@ public class Dado extends Activity implements SensorEventListener {
         die1 = (ImageView) findViewById(R.id.die1);
         die1.setImageDrawable(res.getDrawable(R.drawable.inicio, null));
 
-        diceContainer = (LinearLayout) findViewById(R.id.diceContainer);
-        diceContainer.setOnClickListener(new OnClickListener() {
+        ImageView dado = (ImageView) findViewById(R.id.die1);
+        dado.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 try {
                     rollDice();
                 } catch (Exception e) {};
             }
         });
+
+        ImageView b_avancar = (ImageView) findViewById(R.id.botao_avancar);
+        b_avancar.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentTrocaTelaFormulario = new Intent(Dado.this, MainActivity.class);
+                startActivity(intentTrocaTelaFormulario);
+            }
+        });
+
         die1 = (ImageView) findViewById(R.id.die1);
         animationHandler = new Handler() {
             public void handleMessage(Message msg) {
