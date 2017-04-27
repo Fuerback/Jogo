@@ -2,6 +2,7 @@ package fuerback.imagemacao;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Ringtone;
@@ -32,6 +33,15 @@ public class CronometroActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cronometro);
+
+        Intent intent = getIntent();
+        Carta carta = (Carta) intent.getSerializableExtra("carta");
+        if(carta != null){
+            TextView pontuacao = (TextView)findViewById(R.id.pontuacao_cronometro);
+            TextView descricao = (TextView)findViewById(R.id.descricao_cronometro);
+            descricao.setText(carta.getTextoPessoa());
+            pontuacao.setText("Valendo " + Integer.toString(carta.getPontosPessoa()) + " ponto(s)");
+        }
 
         //Cronometro
         seconds = (TextView)findViewById(R.id.timer);

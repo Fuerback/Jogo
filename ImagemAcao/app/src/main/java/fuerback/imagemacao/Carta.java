@@ -1,10 +1,12 @@
 package fuerback.imagemacao;
 
+import java.io.Serializable;
+
 /**
  * Created by Usuario on 28/03/2017.
  */
 
-public class Carta {
+public class Carta implements Serializable {
 
     public int getId() {
         return id;
