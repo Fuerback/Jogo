@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/imagem_acao">
+        <uses-permission android:name="android.permission.VIBRATE"/>
         <activity android:name=".Dado">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity android:name=".CronometroActivity"
             android:label="@string/app_name">
         </activity>
     </application>

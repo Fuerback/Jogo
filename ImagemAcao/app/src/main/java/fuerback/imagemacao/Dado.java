@@ -43,7 +43,8 @@ public class Dado extends Activity implements SensorEventListener {
     @SuppressWarnings("unused")
     private int diceSum;
     private int roll[] = new int[] { 6, 6 };
-    private ImageView die1;
+    private ImageView botaoDado;
+    private ImageView botaoAvancar;
     private SensorManager sensorMgr;
     private Handler animationHandler;
     private long lastUpdate = -1;
@@ -67,8 +68,8 @@ public class Dado extends Activity implements SensorEventListener {
         }
 
         // inicializando com a imagem default
-        die1 = (ImageView) findViewById(R.id.die1);
-        die1.setImageDrawable(res.getDrawable(R.drawable.inicio, null));
+        botaoDado = (ImageView) findViewById(R.id.die1);
+        botaoDado.setImageDrawable(res.getDrawable(R.drawable.inicio, null));
 
         ImageView dado = (ImageView) findViewById(R.id.die1);
         dado.setOnClickListener(new OnClickListener() {
@@ -80,8 +81,10 @@ public class Dado extends Activity implements SensorEventListener {
             }
         });
 
-        ImageView b_avancar = (ImageView) findViewById(R.id.botao_avancar);
-        b_avancar.setOnClickListener(new OnClickListener() {
+        botaoAvancar = (ImageView) findViewById(R.id.botao_avancar);
+        botaoAvancar.setEnabled(false);
+        botaoAvancar.setVisibility(View.INVISIBLE);
+        botaoAvancar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentTrocaTelaFormulario = new Intent(Dado.this, MainActivity.class);
@@ -89,10 +92,10 @@ public class Dado extends Activity implements SensorEventListener {
             }
         });
 
-        die1 = (ImageView) findViewById(R.id.die1);
+        botaoDado = (ImageView) findViewById(R.id.die1);
         animationHandler = new Handler() {
             public void handleMessage(Message msg) {
-                die1.setImageDrawable(dice[roll[0]]);
+                botaoDado.setImageDrawable(dice[roll[0]]);
             }
         };
         sensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -122,6 +125,9 @@ public class Dado extends Activity implements SensorEventListener {
             e.printStackTrace();
         }
         mp.start();
+
+        botaoAvancar.setEnabled(true);
+        botaoAvancar.setVisibility(View.VISIBLE);
     }
 
     //----------------------------------------------------------------------------------------
@@ -145,8 +151,9 @@ public class Dado extends Activity implements SensorEventListener {
     public void onResume() {
         super.onResume();
         // voltando para a imagem default
-        die1 = (ImageView) findViewById(R.id.die1);
-        die1.setImageDrawable(res.getDrawable(R.drawable.inicio, null));
+        botaoDado.setImageDrawable(res.getDrawable(R.drawable.inicio, null));
+        botaoAvancar.setEnabled(false);
+        botaoAvancar.setVisibility(View.INVISIBLE);
         paused = false;
     }
 

@@ -33,5 +33,14 @@
         android:paddingBottom="15dp"
         android:paddingLeft="15dp"/>
 
+    <ImageView
+        android:id="@+id/cronometro"
+        android:src="@drawable/cronometro"
+        android:layout_width="80dip"
+        android:layout_height="80dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="15dp"/>
+
 
 </RelativeLayout>

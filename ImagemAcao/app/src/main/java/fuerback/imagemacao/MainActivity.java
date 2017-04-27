@@ -1,5 +1,6 @@
 package fuerback.imagemacao;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.CountDownTimer;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         MostraCarta(carta);
         cartasLidas++;
 
+        //Botao voltar
         ImageView botaoVoltar = (ImageView)findViewById(R.id.botao_volta);
         botaoVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +64,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Botao cronometro
+        ImageView botaoCronometro = (ImageView)findViewById(R.id.cronometro);
+        botaoCronometro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentTrocaTelaFormulario = new Intent(MainActivity.this, CronometroActivity.class);
+                startActivity(intentTrocaTelaFormulario);
+            }
+        });
+
+        //botao Pular carta
         ImageView pularCarta = (ImageView)findViewById(R.id.botao_pular);
         pularCarta.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
