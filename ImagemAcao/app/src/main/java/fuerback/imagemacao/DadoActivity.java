@@ -7,12 +7,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import java.io.IOException;
 import java.util.Random;
-import android.app.Activity;
+
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -23,8 +20,6 @@ import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 /**
  * Created by Usuario on 24/04/2017.
@@ -32,7 +27,7 @@ import android.widget.RelativeLayout;
 
 //----------------------------------------------------------------------------------------
 
-public class Dado extends Activity implements SensorEventListener {
+public class DadoActivity extends Activity implements SensorEventListener {
 
     private final int rollAnimations = 50;
     private final int delayTime = 15;
@@ -87,7 +82,7 @@ public class Dado extends Activity implements SensorEventListener {
         botaoAvancar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentTrocaTelaFormulario = new Intent(Dado.this, MainActivity.class);
+                Intent intentTrocaTelaFormulario = new Intent(DadoActivity.this, CartaActivity.class);
                 startActivity(intentTrocaTelaFormulario);
             }
         });

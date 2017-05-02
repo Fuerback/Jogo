@@ -35,12 +35,12 @@ public class CronometroActivity extends Activity {
         setContentView(R.layout.activity_cronometro);
 
         Intent intent = getIntent();
-        Carta carta = (Carta) intent.getSerializableExtra("carta");
-        if(carta != null){
+        Item item = (Item) intent.getSerializableExtra("carta");
+        if(item != null){
             TextView pontuacao = (TextView)findViewById(R.id.pontuacao_cronometro);
             TextView descricao = (TextView)findViewById(R.id.descricao_cronometro);
-            descricao.setText(carta.getTextoPessoa());
-            pontuacao.setText("Valendo " + Integer.toString(carta.getPontosPessoa()) + " ponto(s)");
+            descricao.setText(item.getDescricao());
+            pontuacao.setText("Valendo " + Integer.toString(item.getPontuacao()) + " ponto(s)");
         }
 
         //Cronometro

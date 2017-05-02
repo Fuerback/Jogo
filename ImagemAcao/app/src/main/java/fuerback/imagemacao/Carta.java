@@ -1,113 +1,62 @@
 package fuerback.imagemacao;
 
-import java.io.Serializable;
-
 /**
- * Created by Usuario on 28/03/2017.
+ * Created by Usuario on 02/05/2017.
  */
 
-public class Carta implements Serializable {
-
-    public int getId() {
-        return id;
+public class Carta {
+    public Item getPessoa() {
+        return pessoa;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPessoa(Item pessoa) {
+        this.pessoa = pessoa;
     }
 
-    public String getTextoPessoa() {
-        return textoPessoa;
+    public Item getObjeto() {
+        return objeto;
     }
 
-    public void setTextoPessoa(String textoPessoa) {
-        this.textoPessoa = textoPessoa;
+    public void setObjeto(Item objeto) {
+        this.objeto = objeto;
     }
 
-    public String getTextoObjeto() {
-        return textoObjeto;
+    public Item getLazer() {
+        return lazer;
     }
 
-    public void setTextoObjeto(String textoObjeto) {
-        this.textoObjeto = textoObjeto;
+    public void setLazer(Item lazer) {
+        this.lazer = lazer;
     }
 
-    public String getTextoAcao() {
-        return textoAcao;
+    public Item getMix() {
+        return mix;
     }
 
-    public void setTextoAcao(String textoAcao) {
-        this.textoAcao = textoAcao;
+    public void setMix(Item mix) {
+        this.mix = mix;
     }
 
-    public String getTextoDificil() {
-        return textoDificil;
+    public Item getDificil() {
+        return dificil;
     }
 
-    public void setTextoDificil(String textoDificil) {
-        this.textoDificil = textoDificil;
+    public void setDificil(Item dificil) {
+        this.dificil = dificil;
     }
 
-    public int getPontosPessoa() {
-        return pontosPessoa;
+    public Item getAcao() {
+        return acao;
     }
 
-    public void setPontosPessoa(int pontosPessoa) {
-        this.pontosPessoa = pontosPessoa;
+    public void setAcao(Item acao) {
+        this.acao = acao;
     }
 
-    public int getPontosObjeto() {
-        return pontosObjeto;
-    }
-
-    public void setPontosObjeto(int pontosObjeto) {
-        this.pontosObjeto = pontosObjeto;
-    }
-
-    public int getPontosAcao() {
-        return pontosAcao;
-    }
-
-    public void setPontosAcao(int pontosAcao) {
-        this.pontosAcao = pontosAcao;
-    }
-
-    public int getPontosDificil() {
-        return pontosDificil;
-    }
-
-    public void setPontosDificil(int pontosDificil) {
-        this.pontosDificil = pontosDificil;
-    }
-
-    public String getTextoLazer() {return textoLazer;}
-
-    public void setTextoLazer(String textoLazer) {this.textoLazer = textoLazer;}
-
-    public String getTextoMix() {return textoMix;}
-
-    public void setTextoMix(String textoMix) {this.textoMix = textoMix;}
-
-    public int getPontosLazer() {return pontosLazer;}
-
-    public void setPontosLazer(int pontosLazer) {this.pontosLazer = pontosLazer;}
-
-    public int getPontosMix() {return pontosMix;}
-
-    public void setPontosMix(int pontosMix) {this.pontosMix = pontosMix;}
-
-    private String textoPessoa;
-    private String textoObjeto;
-    private String textoAcao;
-    private String textoDificil;
-    private String textoLazer;
-    private String textoMix;
-    private int pontosLazer;
-    private int pontosMix;
-    private int pontosPessoa;
-    private int pontosObjeto;
-    private int pontosAcao;
-    private int pontosDificil;
-    private int id;
-
+    private Item pessoa;
+    private Item objeto;
+    private Item lazer;
+    private Item mix;
+    private Item dificil;
+    private Item acao;
 }

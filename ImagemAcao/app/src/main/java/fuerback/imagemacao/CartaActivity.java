@@ -1,58 +1,48 @@
 package fuerback.imagemacao;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Build;
-import android.os.CountDownTimer;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import fuerback.imagemacao.adapter.CartasAdapter;
 
 //----------------------------------------------------------------------------------------
 
-public class MainActivity extends AppCompatActivity {
+public class CartaActivity extends AppCompatActivity {
 
+    private Carta objCarta;
     private List<Carta> listaCartas;
-    private List<Carta> listaCartas2;
+    private List<Item> listaItens;
     private ListView listViewCartas;
     private int cartasLidas;
-    private Carta objCarta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_carta);
         cartasLidas = 0;
+        listaCartas = new ArrayList<Carta>();
 
         listViewCartas = (ListView)findViewById(R.id.lista_cartas);
-        listaCartas2 = new ArrayList<Carta>();
 
         CarregaDadosJson();
 
-        Carta carta = listaCartas.get(0);
+        Carta carta = listaCartas.get(0); // mudar para randomico
         MostraCarta(carta);
         cartasLidas++;
 
@@ -60,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         listViewCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Carta carta = (Carta)listViewCartas.getItemAtPosition(i);
-                Intent intentTrocaTelaFormulario = new Intent(MainActivity.this, CronometroActivity.class);
-                intentTrocaTelaFormulario.putExtra("carta", carta);
+                Item item = (Item)listViewCartas.getItemAtPosition(i);
+                Intent intentTrocaTelaFormulario = new Intent(CartaActivity.this, CronometroActivity.class);
+                intentTrocaTelaFormulario.putExtra("carta", item);
                 startActivity(intentTrocaTelaFormulario);
             }
         });
@@ -81,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         botaoCronometro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentTrocaTelaFormulario = new Intent(MainActivity.this, CronometroActivity.class);
+                Intent intentTrocaTelaFormulario = new Intent(CartaActivity.this, CronometroActivity.class);
                 startActivity(intentTrocaTelaFormulario);
             }
         });
@@ -111,9 +101,15 @@ public class MainActivity extends AppCompatActivity {
     //----------------------------------------------------------------------------------------
 
     private void MostraCarta(Carta carta) {
-        listaCartas2.clear();
-        listaCartas2.add(carta);
-        CartasAdapter adapter = new CartasAdapter(listaCartas2, this);
+        listaItens = new ArrayList<Item>();
+        listaItens.clear();
+        listaItens.add(carta.getPessoa());
+        listaItens.add(carta.getObjeto());
+        listaItens.add(carta.getAcao());
+        listaItens.add(carta.getDificil());
+        listaItens.add(carta.getLazer());
+        listaItens.add(carta.getMix());
+        CartasAdapter adapter = new CartasAdapter(listaItens, this);
         listViewCartas.setAdapter(adapter);
     }
 
@@ -135,36 +131,54 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONObject obj = new JSONObject(json);
             JSONArray cartas  = obj.getJSONArray("Cartas");
-            listaCartas = new ArrayList<Carta>();
             for(int i = 0; i < cartas.length(); i++) {
                 JSONObject carta = cartas.getJSONObject(i);
                 objCarta = new Carta();
 
+                Item objItem = new Item();
                 JSONObject pessoa = carta.getJSONObject("Pessoa");
-                objCarta.setTextoPessoa(pessoa.getString("Texto"));
-                objCarta.setPontosPessoa(pessoa.getInt("Pontuacao"));
+                objItem.setDescricao(pessoa.getString("Texto"));
+                objItem.setPontuacao(pessoa.getInt("Pontuacao"));
+                objItem.setPropriedade("Pessoa");
+                objCarta.setPessoa(objItem);
 
+                objItem = new Item();
                 JSONObject objeto = carta.getJSONObject("Objeto");
-                objCarta.setTextoObjeto(objeto.getString("Texto"));
-                objCarta.setPontosObjeto(objeto.getInt("Pontuacao"));
+                objItem.setDescricao(objeto.getString("Texto"));
+                objItem.setPontuacao(objeto.getInt("Pontuacao"));
+                objItem.setPropriedade("Objeto");
+                objCarta.setObjeto(objItem);
 
+                objItem = new Item();
                 JSONObject acao = carta.getJSONObject("Acao");
-                objCarta.setTextoAcao(acao.getString("Texto"));
-                objCarta.setPontosAcao(acao.getInt("Pontuacao"));
+                objItem.setDescricao(acao.getString("Texto"));
+                objItem.setPontuacao(acao.getInt("Pontuacao"));
+                objItem.setPropriedade("Acao");
+                objCarta.setAcao(objItem);
 
+                objItem = new Item();
                 JSONObject dificil = carta.getJSONObject("Dificil");
-                objCarta.setTextoDificil(dificil.getString("Texto"));
-                objCarta.setPontosDificil(dificil.getInt("Pontuacao"));
+                objItem.setDescricao(dificil.getString("Texto"));
+                objItem.setPontuacao(dificil.getInt("Pontuacao"));
+                objItem.setPropriedade("Dificil");
+                objCarta.setDificil(objItem);
 
+                objItem = new Item();
                 JSONObject lazer = carta.getJSONObject("Lazer");
-                objCarta.setTextoLazer(lazer.getString("Texto"));
-                objCarta.setPontosLazer(lazer.getInt("Pontuacao"));
+                objItem.setDescricao(lazer.getString("Texto"));
+                objItem.setPontuacao(lazer.getInt("Pontuacao"));
+                objItem.setPropriedade("Lazer");
+                objCarta.setLazer(objItem);
 
+                objItem = new Item();
                 JSONObject mix = carta.getJSONObject("Mix");
-                objCarta.setTextoMix(mix.getString("Texto"));
-                objCarta.setPontosMix(mix.getInt("Pontuacao"));
+                objItem.setDescricao(mix.getString("Texto"));
+                objItem.setPontuacao(mix.getInt("Pontuacao"));
+                objItem.setPropriedade("Mix");
+                objCarta.setMix(objItem);
 
                 listaCartas.add(objCarta);
+
             }
 
         } catch (JSONException e) {

@@ -9,14 +9,14 @@
         android:supportsRtl="true"
         android:theme="@style/imagem_acao">
         <uses-permission android:name="android.permission.VIBRATE"/>
-        <activity android:name=".Dado">
+        <activity android:name=".DadoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".CartaActivity"
             android:label="@string/app_name">
         </activity>
         <activity android:name=".CronometroActivity"

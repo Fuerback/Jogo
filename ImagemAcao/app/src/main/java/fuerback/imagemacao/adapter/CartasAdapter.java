@@ -1,8 +1,6 @@
 package fuerback.imagemacao.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import fuerback.imagemacao.Carta;
+import fuerback.imagemacao.Item;
 import fuerback.imagemacao.R;
 
 /**
@@ -23,13 +21,13 @@ import fuerback.imagemacao.R;
 
 public class CartasAdapter extends BaseAdapter {
 
-    private final List<Carta> carta;
+    private final List<Item> listaItens;
     private final Context context;
 
     //----------------------------------------------------------------------------------------
 
-    public CartasAdapter(List<Carta> carta, Context context) {
-        this.carta = carta;
+    public CartasAdapter(List<Item> itens, Context context) {
+        this.listaItens = itens;
         this.context = context;
     }
 
@@ -37,69 +35,60 @@ public class CartasAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return carta.size();
+        return listaItens.size();
     }
 
     //----------------------------------------------------------------------------------------
 
     @Override
     public Object getItem(int i) {
-        return carta.get(i);
+        return listaItens.get(i);
     }
 
     //----------------------------------------------------------------------------------------
 
     @Override
     public long getItemId(int i) {
-        return carta.get(i).getId();
+        return listaItens.get(i).getId();
     }
 
     //----------------------------------------------------------------------------------------
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
-        Carta carta2 = carta.get(i);
+    public View getView(int posicao, View convertView, ViewGroup viewGroup) {
+        Item objItem = listaItens.get(posicao);
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = convertView;
         if(view == null) {
-            view = inflater.inflate(R.layout.list_carta, viewGroup, false);
+            view = inflater.inflate(R.layout.item_carta, viewGroup, false);
         }
 
-        TextView textoPessoa = (TextView) view.findViewById(R.id.nome_pessoa);
-        textoPessoa.setText(carta2.getTextoPessoa());
+        TextView textoCarta = (TextView) view.findViewById(R.id.descricao_carta);
+        textoCarta.setText(objItem.getDescricao());
 
-        TextView textoObjeto = (TextView) view.findViewById(R.id.nome_objeto);
-        textoObjeto.setText(carta2.getTextoObjeto());
+        TextView pontuacaoCarta = (TextView) view.findViewById(R.id.pontuacao_carta);
+        pontuacaoCarta.setText(Integer.toString(objItem.getPontuacao()));
 
-        TextView textoAcao = (TextView) view.findViewById(R.id.nome_acao);
-        textoAcao.setText(carta2.getTextoAcao());
+        ImageView imagem = (ImageView)view.findViewById(R.id.imagem_carta);
 
-        TextView textoDificil = (TextView) view.findViewById(R.id.nome_dificil);
-        textoDificil.setText(carta2.getTextoDificil());
-
-        TextView textoLazer = (TextView) view.findViewById(R.id.nome_lazer);
-        textoLazer.setText(carta2.getTextoLazer());
-
-        TextView textoMix = (TextView) view.findViewById(R.id.nome_mix);
-        textoMix.setText(carta2.getTextoMix());
-
-        TextView pontuacaoPessoa = (TextView) view.findViewById(R.id.pontuacao_pessoa);
-        pontuacaoPessoa.setText(Integer.toString(carta2.getPontosPessoa()));
-
-        TextView pontuacaoObjeto = (TextView) view.findViewById(R.id.pontuacao_objeto);
-        pontuacaoObjeto.setText(Integer.toString(carta2.getPontosObjeto()));
-
-        TextView pontuacaoAcao = (TextView) view.findViewById(R.id.pontuacao_acao);
-        pontuacaoAcao.setText(Integer.toString(carta2.getPontosAcao()));
-
-        TextView pontuacaoDificil = (TextView) view.findViewById(R.id.pontuacao_dificil);
-        pontuacaoDificil.setText(Integer.toString(carta2.getPontosDificil()));
-
-        TextView pontuacaoLazer = (TextView) view.findViewById(R.id.pontuacao_lazer);
-        pontuacaoLazer.setText(Integer.toString(carta2.getPontosLazer()));
-
-        TextView pontuacaoMix = (TextView) view.findViewById(R.id.pontuacao_mix);
-        pontuacaoMix.setText(Integer.toString(carta2.getPontosMix()));
+        if(objItem.getPropriedade() == "Pessoa") {
+            imagem.setImageResource(R.drawable.pessoa);
+        }
+        if(objItem.getPropriedade() == "Objeto") {
+            imagem.setImageResource(R.drawable.objeto);
+        }
+        if(objItem.getPropriedade() == "Acao") {
+            imagem.setImageResource(R.drawable.acao);
+        }
+        if(objItem.getPropriedade() == "Dificil") {
+            imagem.setImageResource(R.drawable.dificil);
+        }
+        if(objItem.getPropriedade() == "Lazer") {
+            imagem.setImageResource(R.drawable.lazer);
+        }
+        if(objItem.getPropriedade() == "Mix") {
+            imagem.setImageResource(R.drawable.mix);
+        }
 
         return view;
     }
